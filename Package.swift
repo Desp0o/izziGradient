@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "izziGradient",
     platforms: [
-        .iOS(.v12)  // Ensure this is set to iOS platform
+        .iOS(.v15)  // Ensure this is set to iOS platform
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.

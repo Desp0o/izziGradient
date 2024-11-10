@@ -1,3 +1,10 @@
+//
+//  IzziRadialGradient.swift
+//  izziGradient
+//
+//  Created by Despo on 11.11.24.
+//
+
 import UIKit
 
 public class IzziLinearGradient: UIView {

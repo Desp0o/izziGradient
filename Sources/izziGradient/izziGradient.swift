@@ -1,12 +1,24 @@
 import UIKit
 
-public class LinearGradient: UIView {
+public class IzziLinearGradient: UIView {
     let gradientLayer = CAGradientLayer()
-    
+        
     // Property to hold the colors passed by the user
     public var gradientColors: [UIColor] = [] {
         didSet {
             updateGradientColors()
+        }
+    }
+    
+    public var startPoint = CGPoint(x: 0.0, y: 0.0) {
+        didSet {
+            updatePoints()
+        }
+    }
+    
+    public var endPoint = CGPoint(x: 0.0, y: 1.0) {
+        didSet {
+            updatePoints()
         }
     }
     
@@ -26,8 +38,14 @@ public class LinearGradient: UIView {
         if !gradientColors.isEmpty {
             gradientLayer.colors = gradientColors.map { $0.cgColor }
             layer.addSublayer(gradientLayer)
-            setNeedsLayout()  
+            setNeedsLayout()
         }
+    }
+    
+    private func updatePoints() {
+        gradientLayer.startPoint = startPoint
+        gradientLayer.endPoint = endPoint
+        setNeedsLayout()
     }
     
     // Ensure the gradient layer’s frame is updated during layout changes

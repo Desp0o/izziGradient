@@ -3,7 +3,6 @@ import UIKit
 public class IzziLinearGradient: UIView {
     let gradientLayer = CAGradientLayer()
         
-    // Property to hold the colors passed by the user
     public var gradientColors: [UIColor] = [] {
         didSet {
             updateGradientColors()
@@ -22,19 +21,21 @@ public class IzziLinearGradient: UIView {
         }
     }
     
-    // Initializer for programmatically creating the view
+    public var colorLocations: [NSNumber] = [] {
+        didSet {
+            updateColorLocations()
+        }
+    }
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
-    // Required initializer for using the view in Storyboards or XIBs
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    // Method to update the gradient when colors change
     private func updateGradientColors() {
-        // Only update the gradient if colors are provided
         if !gradientColors.isEmpty {
             gradientLayer.colors = gradientColors.map { $0.cgColor }
             layer.addSublayer(gradientLayer)
@@ -48,11 +49,14 @@ public class IzziLinearGradient: UIView {
         setNeedsLayout()
     }
     
-    // Ensure the gradient layer’s frame is updated during layout changes
+    private func updateColorLocations() {
+        gradientLayer.locations = colorLocations
+        setNeedsLayout()
+    }
+    
     override open func layoutSubviews() {
         super.layoutSubviews()
         
-        // Update the gradient layer frame
         if gradientLayer.frame != bounds {
             gradientLayer.frame = bounds
         }

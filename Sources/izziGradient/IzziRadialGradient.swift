@@ -9,7 +9,7 @@ import UIKit
 
 public class IzziRadialGradient: UIView {
     
-    public var gradientColors: [UIColor] = [.white, .black] {
+    public var gradientColors: [UIColor] = [] {
         didSet {
             setNeedsDisplay()
         }

@@ -5,11 +5,10 @@
 //  Created by Despo on 11.11.24.
 //
 
-import UIKit
 
 public class IzziLinearGradient: UIView {
     let gradientLayer = CAGradientLayer()
-        
+    
     public var gradientColors: [UIColor] = [] {
         didSet {
             updateGradientColors()
@@ -67,6 +66,17 @@ public class IzziLinearGradient: UIView {
         if gradientLayer.frame != bounds {
             gradientLayer.frame = bounds
         }
+    }
+    
+    public func animateColors(to newColors: [UIColor], duration: CFTimeInterval) {
+        let animation = CABasicAnimation(keyPath: "colors")
+        animation.fromValue = gradientLayer.colors
+        animation.toValue = newColors.map { $0.cgColor }
+        animation.duration = duration
+        animation.fillMode = .forwards
+        animation.isRemovedOnCompletion = false
+        gradientLayer.add(animation, forKey: "colorsChange")
+        gradientLayer.colors = newColors.map { $0.cgColor } // Update to new colors
     }
     
 }

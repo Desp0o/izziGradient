@@ -43,10 +43,8 @@ gradientView.endPoint = CGPoint(x: 0.4, y: 1.0)
 
 #### Animate Linear Gradient
 ```swift
-import izziGradient
-
 graDispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-gradientView.animateColors(to: [UIColor.green, UIColor.yellow], duration: 3.0)
+    gradientView.animateColors(to: [UIColor.green, UIColor.yellow], duration: 3.0)
 }
 ```
 

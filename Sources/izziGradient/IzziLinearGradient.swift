@@ -5,6 +5,7 @@
 //  Created by Despo on 11.11.24.
 //
 
+import UIKit
 
 public class IzziLinearGradient: UIView {
     let gradientLayer = CAGradientLayer()
@@ -68,15 +69,35 @@ public class IzziLinearGradient: UIView {
         }
     }
     
-    public func animateColors(to newColors: [UIColor], duration: CFTimeInterval) {
+    public func animateColors(to newColors: [UIColor], duration: CFTimeInterval = 3.0, repeatCount: Float = .infinity, autoReverse: Bool = true) {
         let animation = CABasicAnimation(keyPath: "colors")
         animation.fromValue = gradientLayer.colors
         animation.toValue = newColors.map { $0.cgColor }
         animation.duration = duration
         animation.fillMode = .forwards
+        animation.repeatCount = repeatCount
+        animation.autoreverses = autoReverse
         animation.isRemovedOnCompletion = false
         gradientLayer.add(animation, forKey: "colorsChange")
-        gradientLayer.colors = newColors.map { $0.cgColor } // Update to new colors
     }
     
+    public func animatePoints(to startPoint: CGPoint, endPoint: CGPoint, duration: CFTimeInterval = 3.0, repeatCount: Float = .infinity, autoReverse: Bool = true) {
+        let startAnimation = CABasicAnimation(keyPath: "startPoint")
+        startAnimation.fromValue = gradientLayer.startPoint
+        startAnimation.toValue = startPoint
+        
+        let endAnimation = CABasicAnimation(keyPath: "endPoint")
+        endAnimation.fromValue = gradientLayer.endPoint
+        endAnimation.toValue = endPoint
+        
+        let animationGroup = CAAnimationGroup()
+        animationGroup.animations = [startAnimation, endAnimation]
+        animationGroup.duration = duration
+        animationGroup.fillMode = .forwards
+        animationGroup.repeatCount = .infinity
+        animationGroup.autoreverses = true
+        animationGroup.isRemovedOnCompletion = false
+        
+        gradientLayer.add(animationGroup, forKey: "pointsChange")
+    }
 }

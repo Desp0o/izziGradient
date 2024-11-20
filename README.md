@@ -43,12 +43,12 @@ gradientView.endPoint = CGPoint(x: 0.4, y: 1.0)
 
 #### Animate Linear Gradient
 ```swift
-gradientView.animateColors(to: [UIColor.green, UIColor.yellow], duration: 3.0)
+gradientView.animateColors(to: [UIColor.green, UIColor.yellow], duration: 3.0, repeatCount: .infinity, autoReverse: true)
 ```
 
 #### Animate Linear Gradient Start/End points
 ```swift
-gradientView.animatePoints(to: CGPoint(x: 1.0, y: 0.0), endPoint: CGPoint(x: 0.0, y: 1.0), duration: 3.0)
+gradientView.animatePoints(to: CGPoint(x: 1.0, y: 0.0), endPoint: CGPoint(x: 0.0, y: 1.0), duration: 3.0, repeatCount: .infinity, autoReverse: true)
 ```
 
 #### Radial Gradient

@@ -55,7 +55,6 @@ DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 }
 ```
 
-
 #### Radial Gradient
 ```swift
 import izziGradient
@@ -66,3 +65,8 @@ gradientView.colorLocations = [0.0, 1.0]
 gradientView.centerPoint = CGPoint(x: 0.5, y: 0.3)
 gradientView.radius = 200
 ```
+
+![Static Badge](https://img.shields.io/badge/version-1.1.0-green) ![Static Badge](https://img.shields.io/badge/License-MIT-green)
+
+
+![Static Badge](https://img.shields.io/badge/Swift-6.0-orange) ![Static Badge](https://img.shields.io/badge/platforms-iOS-orange)
